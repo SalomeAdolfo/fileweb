@@ -8,4 +8,8 @@ a{
     grid-template-rows: repeat(4, 50px); /* Crea 4 filas de 50px de alto */
     gap: 10px; /* Espacio de separación entre celdas */
   }
+
+  .download_file{
+    cursor: pointer;
+  }
   

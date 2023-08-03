@@ -57,10 +57,10 @@ function AdministradorPage() {
                       <path d="M12,6a2,2,0,0,0-2,2V56a2,2,0,0,0,2,2H52a2,2,0,0,0,2-2V8a2,2,0,0,0-2-2ZM52,56H12V54H52ZM52,50H12V20H52Z" />
                     </g>
                   </svg>
-                  <a key={idx} href='/general/'>{el}</a>
+                  <a key={idx} href={`/folder/${el}`}>{el}</a>
                 </>)
             }
-          </>) : null}
+          </>) :  <p>No hay nada aún</p>}
       </div>
       <button onClick={() => createFolder()}>Crear carpeta</button>
     </div>
