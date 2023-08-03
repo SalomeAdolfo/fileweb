@@ -1,0 +1,11 @@
+a{
+    color: black;
+    text-decoration: none;
+}
+.grid-container {
+    display: grid;
+    grid-template-columns: repeat(3, 100px); /* Crea 3 columnas de 100px de ancho */
+    grid-template-rows: repeat(4, 50px); /* Crea 4 filas de 50px de alto */
+    gap: 10px; /* Espacio de separación entre celdas */
+  }
+  
