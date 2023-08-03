@@ -3,6 +3,7 @@ import { useParams } from 'react-router-dom'
 import { url } from '../constants/route'
 import '../styles/FilesStyles.css'
 function SubCarpetasPage() {
+
     const { backFolder } = useParams()
     const [data, setData] = React.useState([])
     React.useEffect(() => {
@@ -15,6 +16,36 @@ function SubCarpetasPage() {
         }
         getList()
     }, [])
+
+    const [selectedFile, setSelectedFile] = React.useState(null);
+
+    const handleFileChange = (event) => {
+        setSelectedFile(event.target.files[0]);
+    };
+
+    const handleSubmit = (event) => {
+        event.preventDefault();
+
+        // Aquí puedes hacer la solicitud para subir el archivo a tu API utilizando fetch() o alguna biblioteca como axios.
+        // Asegúrate de configurar correctamente la URL y los headers para enviar el archivo al servidor.
+
+        const formData = new FormData();
+        formData.append('file', selectedFile);
+
+        fetch(`${url}folders/addfile/${backFolder}`, {
+            method: 'POST',
+            body: formData,
+        })
+            .then((response) => response.json())
+            .then((data) => {
+                // Aquí puedes manejar la respuesta del servidor después de cargar el archivo, si es necesario.
+                console.log(data);
+            })
+            .catch((error) => {
+                // Manejo de errores
+                console.error(error);
+            });
+    };
     function downloadFile(ruta) {
         fetch(`${url}folders/list/${ruta}`)
             .then((response) => {
@@ -66,6 +97,10 @@ function SubCarpetasPage() {
                     )) : <p>No hay nada aún</p>
                 }
             </div>
+            <form onSubmit={handleSubmit}>
+                <input type="file" onChange={handleFileChange} />
+                <button type="submit">Subir archivo</button>
+            </form>
         </section>
     )
 }
