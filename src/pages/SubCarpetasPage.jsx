@@ -15,6 +15,7 @@ function SubCarpetasPage() {
             }
         }
         getList()
+    // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [])
 
     const [selectedFile, setSelectedFile] = React.useState(null);

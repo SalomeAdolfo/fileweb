@@ -6,6 +6,9 @@ import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import AdministradorPage from './pages/AdministradorPage';
 import GeneralPage from './pages/GeneralPage';
 import SubCarpetasPage from './pages/SubCarpetasPage';
+import SGCPage from './pages/SGCPage';
+import FormEmpleado from './components/FormEmleados';
+
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
@@ -16,6 +19,8 @@ root.render(
         <Route path='/general' element={<GeneralPage/>}/>
         <Route path='/admin' element={<AdministradorPage/>}/>
         <Route path='/folder/:backFolder' element={<SubCarpetasPage/>}/>
+        <Route path='/sgc' element={<SGCPage/>} />
+        <Route path='/sgc/nuevo' element={<FormEmpleado/>} />
       </Routes>
     </BrowserRouter>
   </React.StrictMode>
