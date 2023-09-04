@@ -8,6 +8,7 @@ import GeneralPage from './pages/GeneralPage';
 import SubCarpetasPage from './pages/SubCarpetasPage';
 import SGCPage from './pages/SGCPage';
 import FormEmpleado from './components/FormEmleados';
+import BirthPage from './components/BirthPage';
 
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
@@ -16,11 +17,12 @@ root.render(
     <BrowserRouter>
       <Routes>
         <Route index path='/' element={<App />} />
-        <Route path='/general' element={<GeneralPage/>}/>
-        <Route path='/admin' element={<AdministradorPage/>}/>
-        <Route path='/folder/:backFolder' element={<SubCarpetasPage/>}/>
-        <Route path='/sgc' element={<SGCPage/>} />
-        <Route path='/sgc/nuevo' element={<FormEmpleado/>} />
+        <Route path='/general' element={<GeneralPage />} />
+        <Route path='/admin' element={<AdministradorPage />} />
+        <Route path='/folder/:backFolder' element={<SubCarpetasPage />} />
+        <Route path='/sgc' element={<SGCPage />} />
+        <Route path='/sgc/nuevo' element={<FormEmpleado />} />
+        <Route path='/sgc/birthdays' element={<BirthPage />} />
       </Routes>
     </BrowserRouter>
   </React.StrictMode>

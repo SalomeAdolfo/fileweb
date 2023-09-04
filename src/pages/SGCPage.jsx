@@ -1,7 +1,8 @@
 import React from 'react'
-import SGCListaEmpleados from '../components/SGCListaEmpleados'
 import { url } from '../constants/route'
 import { useNavigate } from 'react-router-dom'
+import ExportToExcel from '../components/ExportToExcel'
+import '../styles/SGCStyles.css'
 
 function SGCPage() {
     const navigate = useNavigate()
@@ -24,11 +25,23 @@ function SGCPage() {
 
         }
     }, [])
+    //            <SGCListaEmpleados data={data} />
+    // const menuitems = ['Cumpleaños', 'Alta de empleados', 'Contratos', 'Actas administrativas', 'SGC', 'Vacaciones']
+    //const mesesList = ['Enero', 'Febrero', 'Marzo', 'Abril', 'Mayo', 'Junio', 'Julio', 'Agosto', 'Septiembre', 'Octubre']
     return (
-        <div className='container-fluid'>
-            <button className='btn btn-primary' onClick={() => navigate('/sgc/nuevo')}>Crear empleado</button>
-            <SGCListaEmpleados data={data} />
-        </div>
+        <div className='container-fluid mt-5'>
+            <h1 className='text-center fw-bold'>Bienvenido</h1>
+            {/* <ExportToExcel data={data} /> */}
+            <div className='mesesContainer mt-5'>
+                <button onClick={() => navigate('/sgc/nuevo')}>Alta de empleados</button>
+                <button onClick={() => navigate('/sgc/birthdays')}>Cumpleaños</button >
+                <button>Contratos</button >
+                <button>Actas administrativas</button >
+                <button>SGC</button>
+                <button>Vacaciones</button>
+
+            </div>
+        </div >
     )
 }
 
