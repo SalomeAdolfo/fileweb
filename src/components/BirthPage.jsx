@@ -47,7 +47,7 @@ function BirthPage() {
                 }
             </div>
 
-            <SGCListaEmpleados data={filteredPerson} />
+            <SGCListaEmpleados data={filteredPerson} parent='Birth' />
 
         </section>
     )

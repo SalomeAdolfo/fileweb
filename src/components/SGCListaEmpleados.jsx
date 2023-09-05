@@ -2,7 +2,7 @@ import React from 'react'
 import { useNavigate } from 'react-router-dom'
 
 function SGCListaEmpleados(props) {
-    const { data } = props
+    const { data, parent } = props
     const navigate = useNavigate()
     return (
         <div className="table-responsive">
@@ -13,11 +13,11 @@ function SGCListaEmpleados(props) {
         align-middle">
                 <thead className="table-light">
                     <tr>
-                        <th>ID</th>
-                        <th>NOMBRES</th>
-                        <th>Apellido paterno</th>
-                        <th>Apellido Materno</th>
+                        <th>Puesto</th>
                         <th>Localidad</th>
+                        <th>Nombre empleado</th>
+                        <th>Fecha Cumpleaños</th>
+                        <th>Fecha registro</th>
                         <th>Estatus</th>
                         <th></th>
                     </tr>
@@ -27,12 +27,17 @@ function SGCListaEmpleados(props) {
                     {
                         data.map((el, idx) =>
                             <tr key={idx} className='table-primary'>
-                                <td>{el.id}</td>
-                                <td>{el.nombres}</td>
-                                <td>{el.apellido_paterno}</td>
-                                <td>{el.apellido_materno}</td>
-                                <td>{el.localidad}</td>
-                                <td>{el.estatus}</td>
+
+                                {parent === 'Birth' ? (
+                                    <>
+                                        <td>{el.puesto}</td>
+                                        <td>{el.localidad}</td>
+                                        <td>{el.nombres + " " + el.apellido_paterno + " " + el.apellido_materno}</td>
+                                        <td>{el.fecha_nacimiento}</td>
+                                        <td>{el.fecha_registro}</td>
+                                    </>
+                                ) : null}
+
                                 <td><button className='btn btn-secondary' onClick={() => navigate(`/sgc/detalles/${el.id}`)}>Detalles</button></td>
                             </tr>
                         )
