@@ -39,7 +39,6 @@ function SGCPage() {
                 <button>Actas administrativas</button >
                 <button>SGC</button>
                 <button>Vacaciones</button>
-
             </div>
         </div >
     )
