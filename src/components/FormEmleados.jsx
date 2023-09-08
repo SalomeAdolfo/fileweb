@@ -49,17 +49,17 @@ const FormEmpleado = () => {
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        async function postEmpleado() {
-            const res = await fetch(`${url}empleados/crearEmpleado`, {
+        async function postEmpleado (){
+            const res = await fetch(`${url}empleados/crearEmpleado`,{
                 method: 'POST',
-                headers: {
+                headers:{
                     'Content-Type': 'application/json'
                 },
                 body: JSON.stringify({
                     ...formData
                 })
             })
-            if (res.ok) {
+            if(res.ok){
                 alert("Empleado registrado")
             }
             console.log(res.status)
@@ -68,7 +68,7 @@ const FormEmpleado = () => {
         console.log(formData);
     };
 
-
+   
     const handleChange = (e) => {
         const { name, value } = e.target;
 
