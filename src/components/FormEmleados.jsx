@@ -49,17 +49,17 @@ const FormEmpleado = () => {
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        async function postEmpleado (){
-            const res = await fetch(`${url}empleados/crearEmpleado`,{
+        async function postEmpleado() {
+            const res = await fetch(`${url}empleados/crearEmpleado`, {
                 method: 'POST',
-                headers:{
+                headers: {
                     'Content-Type': 'application/json'
                 },
                 body: JSON.stringify({
                     ...formData
                 })
             })
-            if(res.ok){
+            if (res.ok) {
                 alert("Empleado registrado")
             }
             console.log(res.status)
@@ -70,11 +70,41 @@ const FormEmpleado = () => {
 
     const handleChange = (e) => {
         const { name, value } = e.target;
-        setFormData((prevData) => ({
-            ...prevData,
-            [name]: value,
-        }));
+
+        // Verificar si el campo que cambió es 'renovar_contrato'
+        if (name === 'renovar_contrato') {
+            // Si el valor seleccionado es 'Si', calcula la nueva fecha de término del contrato
+            if (value === 'Si') {
+                const fechaRegistro = new Date(formData.fecha_registro);
+                const periodoContrato = parseInt(formData.periodo_contrato, 10);
+
+                if (!isNaN(periodoContrato)) {
+                    fechaRegistro.setDate(fechaRegistro.getDate() + periodoContrato);
+                    // Formatea la fecha para tener un valor compatible con el input type="date"
+                    const formattedDate = fechaRegistro.toISOString().substr(0, 10);
+
+                    setFormData((prevData) => ({
+                        ...prevData,
+                        [name]: value,
+                        fecha_termino_contrato: formattedDate,
+                    }));
+                }
+            } else {
+                // Si el valor seleccionado no es 'Si', simplemente actualiza el estado
+                setFormData((prevData) => ({
+                    ...prevData,
+                    [name]: value,
+                }));
+            }
+        } else {
+            // Si el campo que cambió no es 'renovar_contrato', simplemente actualiza el estado
+            setFormData((prevData) => ({
+                ...prevData,
+                [name]: value,
+            }));
+        }
     };
+
 
     return (
         <Form onSubmit={handleSubmit}>
