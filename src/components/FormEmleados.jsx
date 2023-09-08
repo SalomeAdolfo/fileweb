@@ -68,6 +68,7 @@ const FormEmpleado = () => {
         console.log(formData);
     };
 
+
     const handleChange = (e) => {
         const { name, value } = e.target;
 
@@ -104,7 +105,6 @@ const FormEmpleado = () => {
             }));
         }
     };
-
 
     return (
         <Form onSubmit={handleSubmit}>
